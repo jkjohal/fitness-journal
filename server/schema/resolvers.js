@@ -15,6 +15,7 @@ const resolvers = {
     },
     Mutation: {
         addExercise: async (_,  {
+            _id,
             exerciseName, 
             duration, 
             amount, 
@@ -22,10 +23,11 @@ const resolvers = {
             exerciseType
         }) => {
             const newExercise = {
+                _id: ID || undefined,
                 exerciseName: exerciseName || "Workout",
                 duration: duration || 0,
                 amount: amount || 0,
-                date: date || Date.now().toLocaleString(),
+                date: new Date (date) || undefined,
                 exerciseType: exerciseType || "Cardio"
             
             }
